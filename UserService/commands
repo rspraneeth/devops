@@ -1,0 +1,29 @@
+minikube start
+
+& minikube -p minikube docker-env --shell powershell | Invoke-Expression
+
+docker build -t user-app:2.0 . (from project location)
+
+kubectl apply -f k8s-namespace.yaml
+
+kubectl apply -f k8s-deployment.yaml
+
+kubectl apply -f k8s-service.yaml
+
+kubectl get namespaces
+
+kubectl get deployments -n rspace-userapp
+
+kubectl get pods -n rspace-userapp
+
+kubectl get services -n rspace-userapp
+
+kubectl describe service userapp-service -n rspace-userapp
+
+minikube service userapp-service -n rspace-userapp --url
+
+kubectl logs <pod-name> -n rspace-userapp
+
+kubectl get events -n rspace-userapp
+
+Spring Boot Application Port, Container Port, and Service Target Port should all be the same to ensure proper routing of traffic.

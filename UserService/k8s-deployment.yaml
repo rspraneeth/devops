@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-svc-deployment
+  namespace: rspace-userapp
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: spring-boot-k8s
+  template:
+    metadata:
+      labels:
+        app: spring-boot-k8s
+    spec:
+      containers:
+        - name: user-app-container
+          image: user-app:4.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 9191
+      restartPolicy: Always
+      
