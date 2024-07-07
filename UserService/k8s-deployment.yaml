@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: user-app-container
-          image: user-app:4.0
+          image: 'praneethrsp/user-service:1.0.0-1'
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 9191
